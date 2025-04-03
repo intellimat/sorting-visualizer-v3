@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Header from "./components/Header/Header";
 import { FramesSpeed, InitialArraySize } from "./chart.config";
 import { AlgorithmName } from "./sorting-algorithms/types";
@@ -11,17 +11,27 @@ function App() {
     getRandomArrayOfNumbers(InitialArraySize)
   );
 
-  const handleSortingButtonClick = async (algorithmName: AlgorithmName) => {
-    const history = SortingAlgorithms[algorithmName]([...numbers]);
-    for (const frame of history) {
-      await sleep(FramesSpeed);
-      setNumbers(frame);
-    }
-  };
+  const [buttonsDisabled, setButtonsDisabled] = useState<boolean>(false);
 
-  const handleNewArray = (_size?: number) => {
-    setNumbers(getRandomArrayOfNumbers(_size ?? numbers.length));
-  };
+  const handleSortingButtonClick = useCallback(
+    async (algorithmName: AlgorithmName) => {
+      setButtonsDisabled(true);
+      const history = SortingAlgorithms[algorithmName]([...numbers]);
+      for (const frame of history) {
+        await sleep(FramesSpeed);
+        setNumbers(frame);
+      }
+      setButtonsDisabled(false);
+    },
+    [numbers]
+  );
+
+  const handleNewArray = useCallback(
+    (_size?: number) => {
+      setNumbers(getRandomArrayOfNumbers(_size ?? numbers.length));
+    },
+    [numbers.length]
+  );
 
   return (
     <>
@@ -31,6 +41,7 @@ function App() {
         onNewArrayClick={handleNewArray}
         sliderValue={numbers.length}
         onSliderChange={handleNewArray}
+        disabled={buttonsDisabled}
       />
       <Chart numbers={numbers} />
     </>

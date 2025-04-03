@@ -16,7 +16,7 @@ export function swap(array: number[], i: number, j: number) {
     array[i] = array[j];
     array[j] = temp;
   } else {
-    console.warn("\nCannot swap, indeces out of range.\n");
+    console.error("\nCannot swap, indeces out of range.\n");
   }
 }
 
