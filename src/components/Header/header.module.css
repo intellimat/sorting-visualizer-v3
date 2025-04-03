@@ -12,5 +12,10 @@
 
 .sortingButtons {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
+}
+
+.slider {
+  max-width: 300px;
 }
