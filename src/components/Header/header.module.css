@@ -1,0 +1,16 @@
+.title {
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.sortingButtons {
+  display: flex;
+  gap: 6px;
+}
