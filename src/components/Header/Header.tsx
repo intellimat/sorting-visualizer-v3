@@ -7,6 +7,7 @@ import { MaxArraySize, MinArraySize } from "../../chart.config";
 interface Props {
   title: string;
   sliderValue: number;
+  disabled: boolean;
   onSliderChange: (newSize: number) => void;
   onSortButtonClick: (algorithmName: AlgorithmName) => void;
   onNewArrayClick: () => void;
@@ -14,19 +15,21 @@ interface Props {
 
 const Header: React.FC<Props> = ({
   title,
+  sliderValue,
+  disabled,
   onSortButtonClick,
   onNewArrayClick,
-  sliderValue,
   onSliderChange,
 }) => {
   return (
-    <Box className={styles.header}>
+    <Box className={styles.header} bgcolor={"aliceblue"}>
       <h1 className={styles.title}>{title}</h1>
       <Box
         display={"flex"}
         flexWrap={"wrap"}
         justifyContent={"space-between"}
         alignItems={"center"}
+        gap={2}
       >
         <Box
           display={"flex"}
@@ -36,8 +39,9 @@ const Header: React.FC<Props> = ({
           gap={2}
         >
           <Button
-            aria-label="mergesort"
+            aria-label="mergeSort"
             variant="contained"
+            disabled={disabled}
             onClick={() => onSortButtonClick(AlgorithmName.MergeSort)}
           >
             mergesort
@@ -45,6 +49,7 @@ const Header: React.FC<Props> = ({
           <Button
             aria-label="heapSort"
             variant="contained"
+            disabled={disabled}
             onClick={() => onSortButtonClick(AlgorithmName.HeapSort)}
           >
             heapsort
@@ -52,6 +57,7 @@ const Header: React.FC<Props> = ({
           <Button
             aria-label="quickSort"
             variant="contained"
+            disabled={disabled}
             onClick={() => onSortButtonClick(AlgorithmName.QuickSort)}
           >
             quicksort
@@ -60,6 +66,7 @@ const Header: React.FC<Props> = ({
         <Slider
           max={MaxArraySize}
           min={MinArraySize}
+          disabled={disabled}
           value={sliderValue}
           onChange={(_, newValue) => onSliderChange(newValue)}
           step={1}
@@ -68,8 +75,9 @@ const Header: React.FC<Props> = ({
           className={styles.slider}
         />
         <Button
-          aria-label="generateNewArray"
+          aria-label="generate new array"
           variant="outlined"
+          disabled={disabled}
           onClick={() => onNewArrayClick()}
         >
           generate new array
