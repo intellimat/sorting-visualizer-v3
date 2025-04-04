@@ -22,7 +22,7 @@ const Header: React.FC<Props> = ({
   onSliderChange,
 }) => {
   return (
-    <Box className={styles.header} bgcolor={"aliceblue"}>
+    <Box className={styles.header}>
       <h1 className={styles.title}>{title}</h1>
       <Box
         display={"flex"}

@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { MaxInteger } from "../../chart.config";
 import ChartBar from "../ChartBar/ChartBar";
 
 interface Props {
@@ -10,11 +9,10 @@ const Chart: React.FC<Props> = ({ numbers }) => {
   return (
     <Box
       display="flex"
-      marginLeft={2}
-      marginRight={2}
-      marginBottom={2}
+      padding={2}
+      bgcolor={"#fae3e3"}
       alignItems={"flex-end"}
-      height={Math.max(MaxInteger) * 1.1 + "px"}
+      height={"60vh"}
       flexDirection="row"
     >
       {numbers.map((value, index) => (
