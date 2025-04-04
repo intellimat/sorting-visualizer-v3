@@ -39,7 +39,7 @@ const Header: React.FC<Props> = ({
           gap={2}
         >
           <Button
-            aria-label="mergesort"
+            aria-label="mergeSort"
             variant="contained"
             disabled={disabled}
             onClick={() => onSortButtonClick(AlgorithmName.MergeSort)}
