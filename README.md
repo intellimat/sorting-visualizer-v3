@@ -1,54 +1,30 @@
-# React + TypeScript + Vite
+# Sorting Visualizer v3
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Updated version of sorting-visualizer-v2
 
-Currently, two official plugins are available:
+## Run locally
+### Requirements
+- node >= 22.14
+- npm >= 10.9.2
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clone it from your shell  
+```git clone https://github.com/intellimat/sorting-visualizer-v3.git```  
 
-## Expanding the ESLint configuration
+Install dependencies  
+``` cd sorting-visualizer-v3 ```  
+``` npm install ```  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Run it  
+``` npm run dev  ```  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Docker
+You can build the Docker image  
+``` docker build . -t intellimat/sorting-visualizer-v3:latest ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+And run it  
+``` docker run -d -p 4200:80 intellimat/sorting-visualizer-v3:latest ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Your app should be running now on _localhost:4200_
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+You can also pull the image from docker registry  
+``` docker image pull intellimat/sorting-visualizer-v3:latest```
